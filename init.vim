@@ -9,7 +9,7 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
     " Plug 'dracula/vim', { 'as': 'dracula' }
-    Plug 'morhetz/gruvbox'
+    " Plug 'morhetz/gruvbox'
     Plug 'sainnhe/gruvbox-material'
     " Plug 'machakann/vim-sandwich'
     Plug 'tpope/vim-surround'
