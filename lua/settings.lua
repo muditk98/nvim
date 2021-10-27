@@ -25,5 +25,5 @@ vim.o.hidden = true -- Buffers are active in background. Be careful of :q!
 -- Natural splits
 vim.o.splitright = true
 vim.o.splitbelow = true
--- vim.o.number = true  -- Show line numbers
+vim.o.number = true  -- Show line numbers
 vim.o.relativenumber = true -- Show relative line numbers
