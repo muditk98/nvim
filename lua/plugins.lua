@@ -31,6 +31,14 @@ return require('packer').startup(function(use)
 
     use 'sainnhe/gruvbox-material'
 
+    use {
+      'lewis6991/gitsigns.nvim',
+      requires = {
+        'nvim-lua/plenary.nvim'
+      },
+      -- tag = 'release' -- To use the latest release
+    }
+
     if packer_bootstrap then
       require('packer').sync()
     end

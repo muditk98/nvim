@@ -24,6 +24,7 @@ au TextYankPost * silent! lua vim.highlight.on_yank()
 
 lua require('plugins.lualine')
 lua require('plugins.comment')
+lua require('plugins.gitsigns')
 
 
 " Find files using Telescope command-line sugar.
