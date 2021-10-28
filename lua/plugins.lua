@@ -14,38 +14,37 @@ end
 
 
 return require('packer').startup(function(use)
-    -- Packer can manage itself https://github.com/wbthomason/packer.nvim
-    use 'wbthomason/packer.nvim'
-    use {
-      fn.stdpath('data') .. '/swift-vim'
-    }
-    use {
-      'nvim-lualine/lualine.nvim',
-      requires = {'kyazdani42/nvim-web-devicons', opt = true}
-    }
-    use {
-      'nvim-telescope/telescope.nvim',
-      requires = { {'nvim-lua/plenary.nvim'} }
-    }
-    use 'numToStr/Comment.nvim'
+  -- Packer can manage itself https://github.com/wbthomason/packer.nvim
+  use 'wbthomason/packer.nvim'
+  use {
+    fn.stdpath('data') .. '/swift-vim'
+  }
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+  use 'numToStr/Comment.nvim'
 
-    use 'sainnhe/gruvbox-material'
+  use 'sainnhe/gruvbox-material'
 
-    use {
-      'lewis6991/gitsigns.nvim',
-      requires = {
-        'nvim-lua/plenary.nvim'
-      },
-      -- tag = 'release' -- To use the latest release
-    }
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    -- tag = 'release' -- To use the latest release
+  }
 
-    if packer_bootstrap then
-      require('packer').sync()
-    end
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 end)
 -- call plug#begin(stdpath('data') . '/plugged')
 
---     Plug 'airblade/vim-gitgutter'
 --     Plug 'tpope/vim-surround'
 --     Plug 'tpope/vim-repeat'
 --     Plug 'wellle/targets.vim'
