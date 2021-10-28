@@ -23,7 +23,11 @@ return require('packer').startup(function(use)
       'nvim-lualine/lualine.nvim',
       requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
-    use 'kyazdani42/nvim-web-devicons'
+    use {
+      'nvim-telescope/telescope.nvim',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    }
+    use 'numToStr/Comment.nvim'
 
     use 'sainnhe/gruvbox-material'
 
@@ -33,12 +37,9 @@ return require('packer').startup(function(use)
 end)
 -- call plug#begin(stdpath('data') . '/plugged')
 
---     Plug 'tpope/vim-commentary'
---     Plug 'tpope/vim-fugitive'
 --     Plug 'airblade/vim-gitgutter'
 --     Plug 'tpope/vim-surround'
 --     Plug 'tpope/vim-repeat'
---     Plug 'vim-airline/vim-airline'
 --     Plug 'wellle/targets.vim'
 --     Plug 'justinmk/vim-sneak'
 
