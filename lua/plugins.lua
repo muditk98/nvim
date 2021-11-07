@@ -16,9 +16,7 @@ end
 return require('packer').startup(function(use)
   -- Packer can manage itself https://github.com/wbthomason/packer.nvim
   use 'wbthomason/packer.nvim'
-  use {
-    fn.stdpath('data') .. '/swift-vim'
-  }
+  use 'keith/swift.vim'
   use {
     'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
@@ -38,15 +36,14 @@ return require('packer').startup(function(use)
     },
     -- tag = 'release' -- To use the latest release
   }
-
+  use 'tpope/vim-surround'
+  use 'tpope/vim-repeat'
   if packer_bootstrap then
     require('packer').sync()
   end
 end)
 -- call plug#begin(stdpath('data') . '/plugged')
 
---     Plug 'tpope/vim-surround'
---     Plug 'tpope/vim-repeat'
 --     Plug 'wellle/targets.vim'
 --     Plug 'justinmk/vim-sneak'
 
