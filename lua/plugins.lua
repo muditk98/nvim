@@ -38,6 +38,10 @@ return require('packer').startup(function(use)
   }
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
+  use 'tjdevries/train.nvim'
+  use 'krisajenkins/Cocoa-Strings'
+  use 'Yggdroot/indentLine'
+
   if packer_bootstrap then
     require('packer').sync()
   end

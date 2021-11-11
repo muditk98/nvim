@@ -1,4 +1,5 @@
 local o = vim.opt
+local g = vim.g
 
 o.termguicolors = true
 o.confirm = true   -- Confirm changes on quit
@@ -31,3 +32,5 @@ o.splitright = true
 o.splitbelow = true
 o.number = true  -- Show line numbers
 o.relativenumber = true -- Show relative line numbers
+
+g.indentLine_enabled = 0

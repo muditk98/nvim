@@ -5,8 +5,7 @@ lua require('settings')
 colorscheme gruvbox-material
 map Y y$
 
-
-autocmd BufNewFile,BufRead Podfile,*.podspec set filetype=ruby      " set podfiles to use ruby syntax
+autocmd BufNewFile,BufRead Podfile,*.podspec setlocal filetype=ruby      " set podfiles to use ruby syntax
 
 
 
@@ -23,8 +22,8 @@ au TextYankPost * silent! lua vim.highlight.on_yank()
 " Initialize Plugins
 
 lua require('plugins.lualine')
-lua require('plugins.comment')
-lua require('plugins.gitsigns')
+lua require('Comment').setup()
+lua require('gitsigns').setup()
 
 
 " Find files using Telescope command-line sugar.
