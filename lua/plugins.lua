@@ -41,12 +41,12 @@ return require('packer').startup(function(use)
   use 'tjdevries/train.nvim'
   use 'krisajenkins/Cocoa-Strings'
   use 'Yggdroot/indentLine'
-  use 'khaveesh/vim-fish-syntax'
   use {
     'iamcco/markdown-preview.nvim',
     run = function() vim.fn['mkdp#util#install']() end,
     ft = {'markdown'}
   }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   if packer_bootstrap then
     require('packer').sync()
