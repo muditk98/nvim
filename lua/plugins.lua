@@ -16,7 +16,7 @@ end
 return require('packer').startup(function(use)
   -- Packer can manage itself https://github.com/wbthomason/packer.nvim
   use 'wbthomason/packer.nvim'
-  use 'keith/swift.vim'
+  use { fn.stdpath('data') .. '/swift/utils/vim' }
   use {
     'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
