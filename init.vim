@@ -1,13 +1,15 @@
 lua require('plugins')
 lua require('settings')
 
+map <Space> <Leader>
 " let g:gruvbox_contrast_dark='soft'
 colorscheme gruvbox-material
 
 autocmd BufNewFile,BufRead Podfile,*.podspec setlocal filetype=ruby      " set podfiles to use ruby syntax
 
 
-
+set listchars=tab:▸\ ,multispace:·,lead:·,trail:·,nbsp:·
+set list
 " Set number in insert and hybrid in normal
 " :augroup numbertoggle
 " :  autocmd!
