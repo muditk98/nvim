@@ -8,8 +8,9 @@ colorscheme gruvbox-material
 autocmd BufNewFile,BufRead Podfile,*.podspec setlocal filetype=ruby      " set podfiles to use ruby syntax
 
 
-set listchars=tab:▸\ ,multispace:·,lead:·,trail:·,nbsp:·
+set listchars=tab:▸\ ,multispace:·,lead:·,trail:·,nbsp:␣,extends:›,precedes:‹
 set list
+set showbreak=↪
 " Set number in insert and hybrid in normal
 " :augroup numbertoggle
 " :  autocmd!
