@@ -1,5 +1,8 @@
 require("indent_blankline").setup {
-  -- char = "▏",
+  char = "▏",
+  -- char = "│",
+  use_treesitter = true,
+  disable_with_nolist = true,
   show_trailing_blankline_indent = false,
   show_first_indent_level = true,
   show_current_context = true,
