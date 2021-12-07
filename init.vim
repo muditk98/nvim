@@ -27,6 +27,7 @@ lua require('config.lualine')
 lua require('Comment').setup()
 lua require('gitsigns').setup()
 lua require('config.treesitter')
+lua require('nvim-autopairs').setup()
 
 
 " Find files using Telescope command-line sugar.
