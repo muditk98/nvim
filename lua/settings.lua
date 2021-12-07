@@ -34,6 +34,6 @@ o.splitbelow = true
 o.number = true  -- Show line numbers
 o.relativenumber = true -- Show relative line numbers
 
-o.listchars = "tab:>-,multispace:·,lead: ,trail:·,nbsp:␣,extends:›,precedes:‹"
+o.listchars = "tab:▸ ,multispace:·,lead: ,trail:·,nbsp:␣,extends:›,precedes:‹"
 o.list = true
 o.showbreak = "↪"
