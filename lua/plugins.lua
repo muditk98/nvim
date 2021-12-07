@@ -35,15 +35,19 @@ return require('packer').startup(function(use)
   use 'tpope/vim-repeat'
   use 'tjdevries/train.nvim'
   use 'krisajenkins/Cocoa-Strings'
-  use 'Yggdroot/indentLine'
   use {
     'iamcco/markdown-preview.nvim',
     run = function() vim.fn['mkdp#util#install']() end,
     ft = {'markdown'}
   }
+  -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
+  -- use 'p00f/nvim-ts-rainbow'
+
   use { 'windwp/nvim-autopairs' }
+  use 'tweekmonster/startuptime.vim'
+  use 'lukas-reineke/indent-blankline.nvim'
 
   if packer_bootstrap then
     require('packer').sync()

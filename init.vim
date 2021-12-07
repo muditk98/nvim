@@ -7,10 +7,6 @@ colorscheme gruvbox-material
 
 autocmd BufNewFile,BufRead Podfile,*.podspec setlocal filetype=ruby      " set podfiles to use ruby syntax
 
-
-set listchars=tab:>-,multispace:·,lead:\ ,trail:·,nbsp:␣,extends:›,precedes:‹
-set list
-set showbreak=↪
 " Set number in insert and hybrid in normal
 " :augroup numbertoggle
 " :  autocmd!
@@ -28,6 +24,7 @@ lua require('Comment').setup()
 lua require('gitsigns').setup()
 lua require('config.treesitter')
 lua require('nvim-autopairs').setup()
+lua require('config.indent_blankline')
 
 
 " Find files using Telescope command-line sugar.
