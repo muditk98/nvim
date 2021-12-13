@@ -7,15 +7,15 @@ require"nvim-treesitter.configs".setup {
     },
     incremental_selection = {
         enable = true,
-        keymaps = {
-            init_selection = "<CR>",
-            scope_incremental = "<CR>",
-            node_incremental = "<TAB>",
-            node_decremental = "<S-TAB>"
-        }
+        -- keymaps = {
+        --     init_selection = "<CR>",
+        --     scope_incremental = "<CR>",
+        --     node_incremental = "<TAB>",
+        --     node_decremental = "<S-TAB>"
+        -- }
     },
     indent = {enable = true},
-    autopairs = {{enable = true}},
+    -- autopairs = {{enable = true}},
     textobjects = {
         select = {
             enable = true,
@@ -36,9 +36,9 @@ require"nvim-treesitter.configs".setup {
             }
         }
     },
-    rainbow = {
-        enable = true,
-        extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-        max_file_lines = 2000 -- Do not enable for files with more than specified lines
-    }
+    -- rainbow = {
+    --     enable = true,
+    --     extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+    --     max_file_lines = 2000 -- Do not enable for files with more than specified lines
+    -- }
 }
