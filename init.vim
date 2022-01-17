@@ -15,6 +15,7 @@ autocmd BufNewFile,BufRead Podfile,*.podspec setlocal filetype=ruby      " set p
 " :augroup END
 
 au TextYankPost * silent! lua vim.highlight.on_yank()
+au VimEnter * if &diff | execute 'windo set wrap' | endif
 
 
 " Initialize Plugins
@@ -25,6 +26,7 @@ lua require('gitsigns').setup()
 lua require('config.treesitter')
 lua require('nvim-autopairs').setup()
 lua require('config.indent_blankline')
+" lua require('colorizer').setup()
 
 
 " Find files using Telescope command-line sugar.

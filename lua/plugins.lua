@@ -48,6 +48,9 @@ return require('packer').startup(function(use)
   use { 'windwp/nvim-autopairs' }
   use 'tweekmonster/startuptime.vim'
   use 'lukas-reineke/indent-blankline.nvim'
+  use 'norcalli/nvim-colorizer.lua'
+  use 'martinda/Jenkinsfile-vim-syntax'
+  use 'tpope/vim-fugitive'
 
   if packer_bootstrap then
     require('packer').sync()
