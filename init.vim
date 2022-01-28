@@ -1,8 +1,7 @@
-" lua require('mappings')
+lua require('mappings')
 lua require('plugins')
 lua require('settings')
 
-map <Space> <Leader>
 " let g:gruvbox_contrast_dark='soft'
 colorscheme gruvbox-material
 
@@ -28,10 +27,3 @@ lua require('config.treesitter')
 lua require('nvim-autopairs').setup()
 lua require('config.indent_blankline')
 " lua require('colorizer').setup()
-
-
-" Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
