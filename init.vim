@@ -1,3 +1,4 @@
+" lua require('mappings')
 lua require('plugins')
 lua require('settings')
 

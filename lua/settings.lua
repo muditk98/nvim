@@ -37,3 +37,7 @@ o.relativenumber = true -- Show relative line numbers
 o.listchars = "tab:▸ ,multispace:·,lead: ,trail:·,nbsp:␣,extends:›,precedes:‹"
 o.list = true
 o.showbreak = "↪"
+
+o.spelllang = "best,9"
+
+o.mouse = "a"

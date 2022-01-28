@@ -23,7 +23,7 @@ return require('packer').startup(function(use)
   }
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { 'nvim-lua/plenary.nvim' }
   }
   use 'numToStr/Comment.nvim'
   use 'sainnhe/gruvbox-material'
