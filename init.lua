@@ -10,7 +10,7 @@ vim.cmd "colorscheme gruvbox-material"
 
 require('config.lualine')
 require('Comment').setup()
-require('gitsigns').setup()
+require('config.gitsigns')
 require('config.treesitter')
 require('nvim-autopairs').setup()
 require('config.indent_blankline')
