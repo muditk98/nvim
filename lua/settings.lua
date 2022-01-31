@@ -38,6 +38,6 @@ o.listchars = "tab:▸ ,multispace:·,lead: ,trail:·,nbsp:␣,extends:›,prece
 o.list = true
 o.showbreak = "↪"
 
-o.spelllang = "best,9"
+o.spellsuggest = "best,9"
 
 o.mouse = "a"
