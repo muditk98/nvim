@@ -52,6 +52,7 @@ return require('packer').startup(function(use)
   use 'martinda/Jenkinsfile-vim-syntax'
   use 'tpope/vim-fugitive'
   use "folke/which-key.nvim"
+  use 'ggandor/lightspeed.nvim'
 
   if packer_bootstrap then
     require('packer').sync()
