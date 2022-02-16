@@ -1,8 +1,13 @@
 -- set podfiles to use ruby syntax
 vim.cmd("au BufNewFile,BufRead Podfile,*.podspec setlocal filetype=ruby")
 
--- highlight on yank
-vim.cmd("au TextYankPost * silent! lua vim.highlight.on_yank()")
+-- Highlight on yank
+vim.cmd [[
+  augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+  augroup end
+]]
 
 -- Wrap difftool windows
 vim.cmd("au VimEnter * if &diff | execute 'windo set wrap' | endif")

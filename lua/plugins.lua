@@ -45,7 +45,7 @@ return require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   -- use 'p00f/nvim-ts-rainbow'
 
-  use { 'windwp/nvim-autopairs' }
+  use 'windwp/nvim-autopairs'
   use 'tweekmonster/startuptime.vim'
   use 'lukas-reineke/indent-blankline.nvim'
   use 'norcalli/nvim-colorizer.lua'
@@ -62,6 +62,5 @@ end)
 -- call plug#begin(stdpath('data') . '/plugged')
 
 --     Plug 'wellle/targets.vim'
---     Plug 'justinmk/vim-sneak'
 
 -- call plug#end()

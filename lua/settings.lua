@@ -41,3 +41,5 @@ o.showbreak = "↪"
 o.spellsuggest = "best,9"
 
 o.mouse = "a"
+
+o.diffopt:append { 'algorithm:patience' }
