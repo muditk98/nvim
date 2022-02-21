@@ -54,6 +54,7 @@ return require('packer').startup(function(use)
   use "folke/which-key.nvim"
   use 'ggandor/lightspeed.nvim'
   use 'FooSoft/vim-argwrap'
+  use {'kevinhwang91/nvim-bqf', ft = 'qf'}
 
   if packer_bootstrap then
     require('packer').sync()
