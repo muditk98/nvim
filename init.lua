@@ -1,5 +1,5 @@
-require('mappings')
 require('plugins')
+require('mappings')
 require('settings')
 require('autocmds')
 
@@ -14,6 +14,5 @@ require('config.gitsigns')
 require('config.treesitter')
 require('nvim-autopairs').setup()
 require('config.indent_blankline')
--- require('lightspeed').setup{}
 require('which-key').setup()
 -- require('colorizer').setup()
