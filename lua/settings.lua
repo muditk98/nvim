@@ -43,3 +43,4 @@ o.spellsuggest = "best,9"
 o.mouse = "a"
 
 o.diffopt:append { 'algorithm:patience' }
+g.tokyonight_style = "dark"

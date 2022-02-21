@@ -16,25 +16,42 @@ end
 return require('packer').startup(function(use)
   -- Packer can manage itself https://github.com/wbthomason/packer.nvim
   use 'wbthomason/packer.nvim'
-  use { fn.stdpath('data') .. '/swift/utils/vim' }
+-- {{ File type syntax
+  use { fn.stdpath('data') .. '/swift/utils/vim' } -- swift
+  use 'krisajenkins/Cocoa-Strings' -- .strings
+  use 'martinda/Jenkinsfile-vim-syntax' -- Jenkinsfile
+-- }}
+
+-- {{ Git
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = { 'nvim-lua/plenary.nvim' }
+  }
+  use 'tpope/vim-fugitive'
+-- }}
+
+-- {{ Themes
+  use 'sainnhe/gruvbox-material'
+  use 'folke/tokyonight.nvim'
+-- }}
+
+-- {{ Candy
   use {
     'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
+  use 'norcalli/nvim-colorizer.lua'
+  use 'lukas-reineke/indent-blankline.nvim'
+-- }}
+
+  use 'numToStr/Comment.nvim'
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { 'nvim-lua/plenary.nvim' }
-  }
-  use 'numToStr/Comment.nvim'
-  use 'sainnhe/gruvbox-material'
-  use {
-    'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' }
   }
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
   use 'tjdevries/train.nvim'
-  use 'krisajenkins/Cocoa-Strings'
   use {
     'iamcco/markdown-preview.nvim',
     run = function() vim.fn['mkdp#util#install']() end,
@@ -47,15 +64,10 @@ return require('packer').startup(function(use)
 
   use 'windwp/nvim-autopairs'
   use 'tweekmonster/startuptime.vim'
-  use 'lukas-reineke/indent-blankline.nvim'
-  use 'norcalli/nvim-colorizer.lua'
-  use 'martinda/Jenkinsfile-vim-syntax'
-  use 'tpope/vim-fugitive'
-  use "folke/which-key.nvim"
+  use 'folke/which-key.nvim'
   use 'ggandor/lightspeed.nvim'
   use 'FooSoft/vim-argwrap'
   use {'kevinhwang91/nvim-bqf', ft = 'qf'}
-
   if packer_bootstrap then
     require('packer').sync()
   end
