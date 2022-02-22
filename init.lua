@@ -4,10 +4,11 @@ require('settings')
 require('autocmds')
 
 -- let g:gruvbox_contrast_dark='soft'
-vim.cmd "colorscheme tokyonight"
+vim.cmd "colorscheme gruvbox-material"
 
 -- Initialize Plugins
 
+require('config.telescope')
 require('config.lualine')
 require('Comment').setup()
 require('config.gitsigns')
@@ -15,4 +16,3 @@ require('config.treesitter')
 require('nvim-autopairs').setup()
 require('config.indent_blankline')
 require('which-key').setup()
--- require('colorizer').setup()

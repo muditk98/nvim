@@ -18,6 +18,7 @@ map('n', '<leader>fl', '<cmd>Telescope live_grep<cr>', opts)
 map('n', '<leader>fg', '<cmd>Telescope grep_string<cr>', opts)
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', opts)
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', opts)
+map('n', '<leader>fq', [[<cmd>lua require('telescope.builtin').quickfix{initial_mode='normal'}<CR>]], opts)
 map('n', 'z=', '<cmd>Telescope spell_suggest<cr>', opts)
 map('n', 's', '<Plug>Lightspeed_omni_s', {})
 
