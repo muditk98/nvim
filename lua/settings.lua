@@ -44,3 +44,5 @@ o.mouse = "a"
 
 o.diffopt:append { 'algorithm:patience' }
 g.tokyonight_style = "dark"
+
+o.laststatus = 3
