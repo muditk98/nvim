@@ -1,33 +1,26 @@
-local map = vim.api.nvim_set_keymap
+local set = vim.keymap.set
 
-local opts = {noremap = true}
 -- vim.g.mapleader = '\\'
 -- map('', '<Space>', '<Leader>', {noremap = true})
 vim.cmd('map <Space> <Leader>')
 
--- map('v', '<', '<gv', {noremap = true})
--- map('v', '>', '>gv', {noremap = true})
+set('v', '<', '<gv', {noremap = true})
+set('v', '>', '>gv', {noremap = true})
 
 -- Tab switch buffer
 -- map('n', '<TAB>', ':bnext<CR>', {noremap = true})
 -- map('n', '<S-TAB>', ':bprevious<CR>', {noremap = true})
 
 -- Find files using Telescope command-line sugar.
-map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', opts)
-map('n', '<leader>fl', '<cmd>Telescope live_grep<cr>', opts)
-map('n', '<leader>fg', '<cmd>Telescope grep_string<cr>', opts)
-map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', opts)
-map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', opts)
-map('n', '<leader>fc', '<cmd>Telescope commands<cr>', opts)
-map('n', '<leader>fq', [[<cmd>lua require('telescope.builtin').quickfix{initial_mode='normal'}<CR>]], opts)
-map('n', 'z=', '<cmd>Telescope spell_suggest<cr>', opts)
-map('n', 's', '<Plug>Lightspeed_omni_s', {})
-
--- Resizing panes
--- map('n', '<Left>', ':vertical resize +1<CR>', opts)
--- map('n', '<Right>', ':vertical resize -1<CR>', opts)
--- map('n', '<Up>', ':resize -1<CR>', opts)
--- map('n', '<Down>', ':resize +1<CR>', opts)
+set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
+set('n', '<leader>fl', '<cmd>Telescope live_grep<cr>')
+set('n', '<leader>fg', '<cmd>Telescope grep_string<cr>')
+set('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
+set('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
+set('n', '<leader>fc', '<cmd>Telescope commands<cr>')
+set('n', '<leader>fq', function() return require('telescope.builtin').quickfix{initial_mode='normal'} end)
+set('n', 'z=', '<cmd>Telescope spell_suggest<cr>')
+set('n', 's', '<Plug>Lightspeed_omni_s')
 
 -- Argwrap
-map('n', '<leader>a', '<cmd>ArgWrap<cr>', opts)
+set('n', '<leader>a', '<cmd>ArgWrap<cr>')
