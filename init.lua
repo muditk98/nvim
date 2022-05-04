@@ -8,6 +8,7 @@ vim.cmd "colorscheme gruvbox-material"
 
 -- Initialize Plugins
 
+vim.notify = require('notify')
 require('config.telescope')
 require('config.lualine')
 require('Comment').setup()

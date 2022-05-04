@@ -46,3 +46,6 @@ o.diffopt:append { 'algorithm:patience' }
 g.tokyonight_style = "dark"
 
 o.laststatus = 3
+o.foldenable = false
+o.foldmethod = "expr"
+o.foldexpr = "nvim_treesitter#foldexpr()"

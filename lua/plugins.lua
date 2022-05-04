@@ -42,6 +42,7 @@ return require('packer').startup(function(use)
   }
   use 'norcalli/nvim-colorizer.lua'
   use 'lukas-reineke/indent-blankline.nvim'
+  use 'rcarriga/nvim-notify'
 -- }}
 
   use 'numToStr/Comment.nvim'
