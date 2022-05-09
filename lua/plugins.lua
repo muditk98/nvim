@@ -71,6 +71,7 @@ return require('packer').startup(function(use)
   use 'ggandor/lightspeed.nvim'
   use 'FooSoft/vim-argwrap'
   use {'kevinhwang91/nvim-bqf', ft = 'qf'}
+  use 'mbbill/undotree'
   if packer_bootstrap then
     require('packer').sync()
   end

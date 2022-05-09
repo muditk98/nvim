@@ -1,4 +1,4 @@
-require"nvim-treesitter.configs".setup {
+require('nvim-treesitter.configs').setup {
   -- one of "all" or a list of languages
   ensure_installed = {
     "bash",
