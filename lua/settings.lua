@@ -20,7 +20,7 @@ o.softtabstop = 2  -- Number of spaces per Tab
 o.tabstop = 2  -- Number of spaces per Tab
 o.cursorline = true  -- Highlight current line
 
-
+-- o.clipboard = 'unnamedplus'
 -- o.tildeop     -- ~ Tilde is an operator and must be followed by motions
 o.showcmd = true  -- Show commands as they are being typed
 o.scrolloff = 3  -- Minimum lines above/below cursor

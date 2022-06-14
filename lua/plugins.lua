@@ -63,6 +63,7 @@ return require('packer').startup(function(use)
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
+  use 'nvim-treesitter/nvim-treesitter-context'
   -- use 'p00f/nvim-ts-rainbow'
 
   use 'windwp/nvim-autopairs'
@@ -71,7 +72,7 @@ return require('packer').startup(function(use)
   use 'ggandor/lightspeed.nvim'
   use 'FooSoft/vim-argwrap'
   use {'kevinhwang91/nvim-bqf', ft = 'qf'}
-  use 'mbbill/undotree'
+  -- use 'mbbill/undotree'
   if packer_bootstrap then
     require('packer').sync()
   end

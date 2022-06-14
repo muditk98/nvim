@@ -65,3 +65,4 @@ require('nvim-treesitter.configs').setup {
   --     max_file_lines = 2000 -- Do not enable for files with more than specified lines
   -- }
 }
+require('treesitter-context').setup()
