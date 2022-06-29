@@ -17,7 +17,7 @@ return require('packer').startup(function(use)
   -- Packer can manage itself https://github.com/wbthomason/packer.nvim
   use 'wbthomason/packer.nvim'
 -- {{ File type syntax
-  use { fn.stdpath('data') .. '/swift/utils/vim' } -- swift
+  -- use { fn.stdpath('data') .. '/swift/utils/vim' } -- swift
   use 'krisajenkins/Cocoa-Strings' -- .strings
   use 'martinda/Jenkinsfile-vim-syntax' -- Jenkinsfile
 -- }}
@@ -47,6 +47,7 @@ return require('packer').startup(function(use)
 -- }}
 
   use 'numToStr/Comment.nvim'
+  use 'wellle/targets.vim'
   use {
     'nvim-telescope/telescope.nvim',
     requires = { 'nvim-lua/plenary.nvim' }
@@ -79,6 +80,6 @@ return require('packer').startup(function(use)
 end)
 -- call plug#begin(stdpath('data') . '/plugged')
 
---     Plug 'wellle/targets.vim'
+--     Plug 
 
 -- call plug#end()
