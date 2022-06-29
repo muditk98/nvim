@@ -19,7 +19,7 @@ require('nvim-treesitter.configs').setup {
     "make",
     "python",
     "ruby",
-    -- "swift",
+    "swift",
     "typescript",
     "vim",
     "yaml"
@@ -29,15 +29,15 @@ require('nvim-treesitter.configs').setup {
     enable = true, -- false will disable the whole extension
     disable = {} -- list of language that will be disabled
   },
-  -- incremental_selection = {
-    -- enable = true,
-    -- keymaps = {
-  --     init_selection = "<CR>",
-  --     scope_incremental = "<CR>",
-  --     node_incremental = "<TAB>",
-  --     node_decremental = "<S-TAB>"
-  -- }
-  -- },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "<CR>",
+      scope_incremental = "<CR>",
+      node_incremental = "<TAB>",
+      node_decremental = "<S-TAB>"
+    }
+  },
   indent = {enable = true},
   -- autopairs = {{enable = true}},
   -- textobjects = {
@@ -66,4 +66,5 @@ require('nvim-treesitter.configs').setup {
   --     max_file_lines = 2000 -- Do not enable for files with more than specified lines
   -- }
 }
+
 require('treesitter-context').setup()

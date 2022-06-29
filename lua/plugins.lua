@@ -17,7 +17,6 @@ return require('packer').startup(function(use)
   -- Packer can manage itself https://github.com/wbthomason/packer.nvim
   use 'wbthomason/packer.nvim'
 -- {{ File type syntax
-  -- use { fn.stdpath('data') .. '/swift/utils/vim' } -- swift
   use 'krisajenkins/Cocoa-Strings' -- .strings
   use 'martinda/Jenkinsfile-vim-syntax' -- Jenkinsfile
 -- }}
@@ -78,8 +77,3 @@ return require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
--- call plug#begin(stdpath('data') . '/plugged')
-
---     Plug 
-
--- call plug#end()
