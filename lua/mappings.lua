@@ -21,6 +21,7 @@ set('n', '<leader>fc', '<cmd>Telescope commands<cr>')
 set('n', '<leader>fq', function() return require('telescope.builtin').quickfix{initial_mode='normal'} end)
 set('n', 'z=', '<cmd>Telescope spell_suggest<cr>')
 set('n', 's', '<Plug>Lightspeed_omni_s')
+set('n', '<leader>c', '<cmd>let @*=@0<cr>') -- Copy "0 to system register
 
 -- Argwrap
 set('n', '<leader>a', '<cmd>ArgWrap<cr>')
