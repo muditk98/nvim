@@ -1,6 +1,18 @@
 local telescope = require('telescope')
 telescope.setup({
   defaults = {
+    vimgrep_arguments = {
+      "rg",
+      "--follow",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+      "--no-ignore",
+      "--trim",
+    },
     layout_strategy = "horizontal",
     sorting_strategy = "descending",
     layout_config = {
