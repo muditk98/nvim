@@ -1,7 +1,8 @@
+local lspConfig = require('lspconfig')
 local set = vim.keymap.set
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true }
+local opts = { noremap=true, silent=true }
 set('n', '<leader>e', vim.diagnostic.open_float, opts)
 set('n', '[d', vim.diagnostic.goto_prev, opts)
 set('n', ']d', vim.diagnostic.goto_next, opts)
@@ -28,6 +29,12 @@ local on_attach = function(client, bufnr)
   set('n', '<leader>=', vim.lsp.buf.formatting_sync, bufopts)
 end
 
-require('lspconfig').sourcekit.setup{
+lspConfig.sourcekit.setup{
+  on_attach = on_attach
+}
+lspConfig.pyright.setup{
+  on_attach = on_attach
+}
+lspConfig.bashls.setup{
   on_attach = on_attach
 }
