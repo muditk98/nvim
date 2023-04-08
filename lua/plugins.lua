@@ -51,8 +51,9 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim',
     requires = { 'nvim-lua/plenary.nvim' }
   }
+  use 'xiyaowong/telescope-emoji.nvim'
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use 'tpope/vim-surround'
+  use 'kylechui/nvim-surround'
   use 'tpope/vim-repeat'
   use 'tjdevries/train.nvim'
   use {
@@ -69,7 +70,8 @@ return require('packer').startup(function(use)
   use 'windwp/nvim-autopairs'
   use 'tweekmonster/startuptime.vim'
   use 'folke/which-key.nvim'
-  use 'ggandor/lightspeed.nvim'
+  -- use 'ggandor/lightspeed.nvim'
+  use 'ggandor/leap.nvim'
   use 'FooSoft/vim-argwrap'
   use {'kevinhwang91/nvim-bqf', ft = 'qf'}
   use 'duane9/nvim-rg'

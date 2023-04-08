@@ -2,7 +2,7 @@ local set = vim.keymap.set
 
 -- vim.g.mapleader = '\\'
 -- map('', '<Space>', '<Leader>', {noremap = true})
-vim.cmd('map <Space> <Leader>')
+vim.g.mapleader = " "
 
 set('v', '<', '<gv', {noremap = true})
 set('v', '>', '>gv', {noremap = true})
@@ -20,7 +20,7 @@ set('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
 set('n', '<leader>fc', '<cmd>Telescope commands<cr>')
 set('n', '<leader>fq', function() return require('telescope.builtin').quickfix{initial_mode='normal'} end)
 set('n', 'z=', '<cmd>Telescope spell_suggest<cr>')
-set('n', 's', '<Plug>Lightspeed_omni_s')
+-- set('n', 's', '<Plug>Lightspeed_omni_s')
 set('n', '<leader>c', '<cmd>let @*=@"<cr>') -- Copy register " to system clipboard
 
 -- Argwrap
