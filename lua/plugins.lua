@@ -27,7 +27,7 @@ return require('packer').startup(function(use)
     requires = { 'nvim-lua/plenary.nvim' }
   }
   use 'tpope/vim-fugitive'
-  use 'akinsho/git-conflict.nvim'
+  -- use 'akinsho/git-conflict.nvim'
 -- }}
 
 -- {{ Themes
