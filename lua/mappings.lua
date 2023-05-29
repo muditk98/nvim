@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
+vim.keymap.set("n", "<leader>y", '<cmd>let @*=@"<cr>')
 vim.keymap.set("n", "<leader>lg", "<cmd>LazyGit<cr>", { silent = true, noremap = true })
 
 vim.keymap.set("n", "<leader>sb", "<cmd>SidebarNvimToggle<cr>", {})
