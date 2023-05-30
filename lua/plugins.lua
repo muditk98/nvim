@@ -1,4 +1,5 @@
 local plugins = {
+	-- THEMES
 	{ "nyoom-engineering/oxocarbon.nvim", enable = false },
 	{
 		"olimorris/onedarkpro.nvim",
@@ -37,6 +38,8 @@ local plugins = {
 			})
 		end,
 	},
+
+	-- TELESCOPE
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
@@ -46,6 +49,9 @@ local plugins = {
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{ "nvim-treesitter/nvim-treesitter" },
+
+	-- LSP
+
 	{ "jose-elias-alvarez/null-ls.nvim" },
 	{
 		"jay-babu/mason-null-ls.nvim",
@@ -153,13 +159,15 @@ local plugins = {
 			require("lualine").setup()
 		end,
 	},
+	"ggandor/leap.nvim",
+	"mg979/vim-visual-multi",
+	"wellle/targets.vim",
 	{
-		"justinmk/vim-sneak",
-	},
-	{
-		"mg979/vim-visual-multi",
-		config = function() end,
+		"lewis6991/gitsigns.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
 	},
 }
 
-require("lazy").setup(plugins, {})
+require("lazy").setup(plugins)

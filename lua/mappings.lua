@@ -1,39 +1,51 @@
 vim.g.mapleader = " "
 -- buffers
 local map = vim.api.nvim_set_keymap
+local set = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "<leader>y", '<cmd>let @*=@"<cr>')
-vim.keymap.set("n", "<leader>lg", "<cmd>LazyGit<cr>", { silent = true, noremap = true })
+set("n", "<leader>y", '<cmd>let @*=@"<cr>')
+set("n", "<leader>lg", "<cmd>LazyGit<cr>", { silent = true, noremap = true })
 
-vim.keymap.set("n", "<leader>sb", "<cmd>SidebarNvimToggle<cr>", {})
+set("n", "<leader>sb", "<cmd>SidebarNvimToggle<cr>", {})
 
 -- telescope shit
 local telescope_builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", function()
+set("n", "<leader>ff", function()
 	telescope_builtin.find_files({ find_command = { "fd", fname } })
 end, {})
-vim.keymap.set("n", "<leader>fg", telescope_builtin.live_grep, {})
-vim.keymap.set("n", "<leader>gs", telescope_builtin.grep_string, {})
-vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers, {})
-vim.keymap.set("n", "<leader>fr", telescope_builtin.resume, {})
-vim.keymap.set("n", "<leader>fh", telescope_builtin.help_tags, {})
-vim.keymap.set("n", "<leader>lr", telescope_builtin.lsp_references, {})
-vim.keymap.set("n", "<leader>ld", telescope_builtin.diagnostics, {})
-vim.keymap.set("n", "<leader>li", telescope_builtin.lsp_implementations, {})
-vim.keymap.set("n", "<leader>ldf", telescope_builtin.lsp_definitions, {})
-vim.keymap.set("n", "<leader>ltd", telescope_builtin.lsp_type_definitions, {})
 
-vim.keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<cr>", { silent = true, noremap = true })
-vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFocus<cr>", { silent = true, noremap = true })
-vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeFocus<cr>", { silent = true, noremap = true })
+set("v", "<", "<gv")
+set("v", ">", ">gv")
+
+-- Telescope
+set("n", "<leader>fl", telescope_builtin.live_grep)
+set("n", "<leader>fg", telescope_builtin.grep_string)
+set("n", "<leader>fb", telescope_builtin.buffers)
+set("n", "<leader>fr", telescope_builtin.resume)
+set("n", "<leader>fh", telescope_builtin.help_tags)
+set("n", "z=", "<cmd>Telescope spell_suggest<cr>")
+set("n", "<leader>fq", function()
+	return require("telescope.builtin").quickfix({ initial_mode = "normal" })
+end)
+
+-- LSP
+set("n", "<leader>lr", telescope_builtin.lsp_references)
+set("n", "<leader>ld", telescope_builtin.diagnostics)
+set("n", "<leader>li", telescope_builtin.lsp_implementations)
+set("n", "<leader>ldf", telescope_builtin.lsp_definitions)
+set("n", "<leader>ltd", telescope_builtin.lsp_type_definitions)
+
+set("n", "<leader>ee", "<cmd>NvimTreeToggle<cr>", { silent = true, noremap = true })
+set("n", "<leader>ef", "<cmd>NvimTreeFocus<cr>", { silent = true, noremap = true })
+set("n", "<leader>ec", "<cmd>NvimTreeFocus<cr>", { silent = true, noremap = true })
 
 -- lsp shit
 
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
+set("n", "<leader>e", vim.diagnostic.open_float)
 
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+set("n", "[d", vim.diagnostic.goto_prev)
+set("n", "]d", vim.diagnostic.goto_next)
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(ev)
@@ -43,19 +55,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- Buffer local mappings.
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
 		local opts = { buffer = ev.buf }
-		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-		vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
-		vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
-		vim.keymap.set("n", "<leader>wl", function()
+		set("n", "gD", vim.lsp.buf.declaration, opts)
+		set("n", "gd", vim.lsp.buf.definition, opts)
+		set("n", "K", vim.lsp.buf.hover, opts)
+		set("n", "gi", vim.lsp.buf.implementation, opts)
+		set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
+		set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
+		set("n", "<leader>wl", function()
 			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 		end, opts)
-		vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
-		vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts)
-		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-		vim.keymap.set("n", "<leader>cs", vim.lsp.buf.signature_help, opts)
+		set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
+		set("n", "<leader>cr", vim.lsp.buf.rename, opts)
+		set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+		set("n", "<leader>cs", vim.lsp.buf.signature_help, opts)
 	end,
 })
 
@@ -98,11 +110,6 @@ map("n", "<Space>bd", "<Cmd>BufferOrderByDirectory<CR>", opts)
 map("n", "<Space>bl", "<Cmd>BufferOrderByLanguage<CR>", opts)
 map("n", "<Space>bw", "<Cmd>BufferOrderByWindowNumber<CR>", opts)
 
--- map("n", "<C-h>", "<Cmd>wincmd h<CR>", opts)
--- map("n", "<C-j>", "<Cmd>wincmd j<CR>", opts)
--- map("n", "<C-k>", "<Cmd>wincmd k<CR>", opts)
--- map("n", "<C-l>", "<Cmd>wincmd l<CR>", opts)
-
 local modes = {
 	"n",
 	"t",
@@ -113,6 +120,3 @@ for key, value in pairs(modes) do
 	map(value, "<C-j>", "<Cmd>ToggleTerm direction=horizontal<CR>", opts)
 	map(value, "<C-`>", "<Cmd>ToggleTerm direction=vertical<CR>", opts)
 end
-
-map("n", "<leader>p", '"_dP', opts)
-map("n", "<leader>qa", "<Cmd>qa<CR>", opts)

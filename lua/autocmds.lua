@@ -10,7 +10,7 @@ vim.cmd([[
 ]])
 
 -- Wrap difftool windows
-vim.cmd("au VimEnter * if &diff | execute 'windo set wrap' | endif")
+-- vim.cmd("au VimEnter * if &diff | execute 'windo set wrap' | endif")
 
 -- Set number in insert and hybrid in normal
 vim.cmd([[

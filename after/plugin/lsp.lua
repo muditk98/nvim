@@ -6,7 +6,7 @@ local lsp = require("lsp-zero").preset({
 })
 
 local null_ls = require("null-ls")
-vim.cmd([[autocmd BufWritePre * NullFormat]])
+-- vim.cmd([[autocmd BufWritePre * NullFormat]])
 
 lsp.ensure_installed({
 	-- JS Crap
