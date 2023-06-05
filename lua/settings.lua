@@ -51,4 +51,4 @@ o.laststatus = 3
 o.foldenable = false
 o.foldmethod = "expr"
 o.foldexpr = "nvim_treesitter#foldexpr()"
-o.completeopt = { "menu", "menuone", "noselect", "noinsert" }
+-- o.completeopt = { "menu", "menuone", "noselect", "noinsert" }

@@ -14,9 +14,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("settings")
 
-if vim.fn.executable("nvr") == 1 then
-	vim.env.GIT_EDITOR = "nvr --remote-tab-wait +'set bufhidden=delete'"
-end
+-- if vim.fn.executable("nvr") == 1 then
+-- 	vim.env.GIT_EDITOR = "nvr --remote-tab-wait +'set bufhidden=delete'"
+-- end
 require("plugins")
 require("mappings")
 require("autocmds")

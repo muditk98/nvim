@@ -1,4 +1,5 @@
 local plugins = {
+  "dstein64/vim-startuptime",
   -- THEMES
   { "nyoom-engineering/oxocarbon.nvim", enable = false },
   {
