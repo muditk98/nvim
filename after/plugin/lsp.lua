@@ -1,6 +1,3 @@
---[[
---
-
 local lsp = require("lsp-zero").preset({
 	name = "recommended",
 	set_lsp_keymaps = true,
@@ -82,4 +79,3 @@ cmp.setup({
 })
 
 lsp.setup()
---]]
