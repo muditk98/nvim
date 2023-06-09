@@ -17,6 +17,7 @@ end, {})
 
 set("v", "<", "<gv")
 set("v", ">", ">gv")
+set('n', '<leader>a', '<cmd>ArgWrap<cr>')
 
 -- Telescope
 set("n", "<leader>fl", telescope_builtin.live_grep)

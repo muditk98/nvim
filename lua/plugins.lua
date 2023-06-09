@@ -1,41 +1,7 @@
 local plugins = {
   "dstein64/vim-startuptime",
   -- THEMES
-  { "nyoom-engineering/oxocarbon.nvim", enable = false },
-  {
-    "olimorris/onedarkpro.nvim",
-    priority = 1000, -- Ensure it loads first
-    enabled = true,
-  },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-  },
-  {
-    "projekt0n/github-nvim-theme",
-  },
-  {
-    "morhetz/gruvbox",
-    config = function()
-      vim.g.gruvbox_transparent_bg = 1
-      vim.g.gruvbox_italic = 1
-      vim.g.gruvbox_contrast_dark = "hard"
-      vim.cmd("hi! link SignColumn  Normal")
-    end,
-  },
   "sainnhe/gruvbox-material",
-  "kvrohit/mellow.nvim",
-  {
-    "olivercederborg/poimandres.nvim",
-    config = function()
-      require("poimandres").setup({
-        -- leave this setup function empty for default config
-        -- or refer to the configuration section
-        -- for configuration options
-      })
-    end,
-  },
-
   -- Loading early
 
   {
@@ -167,6 +133,10 @@ local plugins = {
       "nvim-tree/nvim-web-devicons",
     },
   },
+  -- File type syntax
+  'krisajenkins/Cocoa-Strings', -- .strings
+  'martinda/Jenkinsfile-vim-syntax', -- Jenkinsfile
+  'FooSoft/vim-argwrap'
 }
 
 require("lazy").setup(plugins)
