@@ -23,32 +23,6 @@ local plugins = {
   },
   "nvim-treesitter/nvim-treesitter",
 
-  -- LSP
-
-  "jose-elias-alvarez/null-ls.nvim",
-  {
-    "jay-babu/mason-null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "williamboman/mason.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
-    },
-  },
-  {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v2.x",
-    dependencies = {
-      -- LSP Support
-      { "neovim/nvim-lspconfig" }, -- Required
-      { "williamboman/mason.nvim" }, -- Optional
-      { "williamboman/mason-lspconfig.nvim" }, -- Optional
-
-      -- Autocompletion
-      { "hrsh7th/nvim-cmp" }, -- Required
-      { "hrsh7th/cmp-nvim-lsp" }, -- Required
-      { "L3MON4D3/LuaSnip" }, -- Required
-    },
-  },
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -125,7 +99,6 @@ local plugins = {
       require("lualine").setup()
     end,
   },
-  "mg979/vim-visual-multi",
   "wellle/targets.vim",
   {
     "lewis6991/gitsigns.nvim",
