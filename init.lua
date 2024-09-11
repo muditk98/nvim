@@ -12,10 +12,19 @@ end
 
 -- vim.o.background = "light"
 -- Neovide shit
-vim.g.neovide_input_macos_option_key_is_meta = "both"
-vim.o.guifont = "JetBrainsMono Nerd Font Mono:h15"
-vim.g.neovide_scroll_animation_length = 0.1
-vim.g.neovide_cursor_animation_length = 0.08
+if vim.g.neovide then
+  vim.g.neovide_input_macos_option_key_is_meta = "both"
+  vim.o.guifont = "JetBrainsMono Nerd Font Mono:h18"
+  vim.g.neovide_scroll_animation_length = 0.1
+  vim.g.neovide_cursor_animation_length = 0.08
+
+  vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
+  vim.keymap.set('v', '<D-c>', '"+y')    -- Copy
+  vim.keymap.set('n', '<D-v>', '"+P')    -- Paste normal mode
+  vim.keymap.set('v', '<D-v>', '"+P')    -- Paste visual mode
+  vim.keymap.set('c', '<D-v>', '<C-R>+') -- Paste command mode
+  vim.keymap.set('i', '<D-v>', '<C-R>+') -- Paste insert mode
+end
 -- vim.opt.hX = 2
 
 vim.opt.rtp:prepend(lazypath)
@@ -35,7 +44,6 @@ vim.opt.ignorecase = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.smartcase = true
-
 
 vim.opt.confirm = true -- Confirm changes on quit
 vim.opt.showmatch = true -- Highlight matching brace
@@ -64,21 +72,20 @@ vim.cmd("au BufNewFile,BufRead Podfile,*.podspec setlocal filetype=ruby")
 
 -- Highlight on yank
 vim.cmd([[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
+augroup YankHighlight
+autocmd!
+autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+augroup end
 ]])
 
 -- Set number in insert and hybrid in normal
 vim.cmd([[
-  augroup numbertoggle
-    autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-  augroup END
+augroup numbertoggle
+autocmd!
+autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 ]])
-
 
 local isNotVscode = function()
   return not vim.g.vscode
@@ -130,18 +137,14 @@ require("lazy").setup({
       require("mason").setup({})
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "dockerls",
           "html",
-          "docker_compose_language_service",
           "lua_ls",
-          "prismals",
           "tsserver",
           "tailwindcss",
           "cssls",
           "cssmodules_ls",
           "graphql",
           "marksman",
-          "gopls",
           "rust_analyzer",
           "jsonls",
           "sqlls",
@@ -184,8 +187,8 @@ require("lazy").setup({
         },
       }
 
-      lsp_zero.format_on_save(format_options)
-      lsp_zero.format_mapping("<F5>", format_options)
+      -- lsp_zero.format_on_save(format_options)
+      -- lsp_zero.format_mapping("<F5>", format_options)
 
       cmp.setup({
         preselect = "item",
@@ -228,9 +231,7 @@ require("lazy").setup({
           null_ls.builtins.diagnostics.eslint,
           -- Replace these with the tools you have installed
           null_ls.builtins.formatting.prettier,
-          null_ls.builtins.formatting.stylua,
-          null_ls.builtins.formatting.gofmt,
-          null_ls.builtins.formatting.goimports,
+          -- null_ls.builtins.formatting.stylua,
         },
       })
 
@@ -257,9 +258,17 @@ require("lazy").setup({
           },
         },
       })
+      require("lspconfig").sourcekit.setup({
+        capabilities = {
+          workspace = {
+            didChangeWatchedFiles = {
+              dynamicRegistration = true,
+            },
+          },
+        },
+      })
     end,
     event = "VeryLazy",
-    enabled = false,
   },
   {
     "kevinhwang91/nvim-ufo",
@@ -297,6 +306,11 @@ require("lazy").setup({
       })
     end,
     event = "VeryLazy",
+    cond = isNotVscode,
+  },
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    event='VeryLazy',
     cond = isNotVscode,
   },
   --
@@ -446,145 +460,146 @@ require("lazy").setup({
     event = "VeryLazy",
   },
   -- {
-  --  "kylechui/nvim-surround",
-  --  version = "*", -- Use for stability; omit to use `main` branch for the latest features
-  --  event = "VeryLazy",
-  --  config = function()
-  --    require("nvim-surround").setup({
-  --      -- Configuration here, or leave empty to use defaults
-  --    })
-  --  end,
-  --  cond = isNotVscode,
-  -- },
-  {
-    'echasnovski/mini.surround',
-    version = '*',
-    event = 'VeryLazy',
-    opts = {
-      mappings = {
-        add = '<leader>sa', -- Add surrounding in Normal and Visual modes
-        delete = '<leader>sd', -- Delete surrounding
-        find = '<leader>sf', -- Find surrounding (to the right)
-        find_left = '<leader>sF', -- Find surrounding (to the left)
-        highlight = '<leader>sh', -- Highlight surrounding
-        replace = '<leader>sr', -- Replace surrounding
-        update_n_lines = '<leader>sn', -- Update `n_lines`
+    --  "kylechui/nvim-surround",
+    --  version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    --  event = "VeryLazy",
+    --  config = function()
+      --    require("nvim-surround").setup({
+        --      -- Configuration here, or leave empty to use defaults
+        --    })
+        --  end,
+        --  cond = isNotVscode,
+        -- },
+        {
+          "echasnovski/mini.surround",
+          version = "*",
+          event = "VeryLazy",
+          opts = {
+            mappings = {
+              add = "<leader>sa", -- Add surrounding in Normal and Visual modes
+              delete = "<leader>sd", -- Delete surrounding
+              find = "<leader>sf", -- Find surrounding (to the right)
+              find_left = "<leader>sF", -- Find surrounding (to the left)
+              highlight = "<leader>sh", -- Highlight surrounding
+              replace = "<leader>sr", -- Replace surrounding
+              update_n_lines = "<leader>sn", -- Update `n_lines`
 
-        suffix_last = 'l', -- Suffix to search with "prev" method
-        suffix_next = 'n', -- Suffix to search with "next" method
-      },
-    },
-    keys = { "<leader>s" }
-  },
-  {
-    "ggandor/leap.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("leap").create_default_mappings()
-    end,
-  },
-  -- Terminal shit
-  {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    config = function()
-      local Terminal = require("toggleterm.terminal").Terminal
-      local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "tab" })
-
-      function Lazygit_toggle()
-        lazygit:toggle()
-      end
-
-      require("toggleterm").setup({
-        shade_terminals = false,
-        auto_scroll = false,
-        float_opts = {
-          -- row = vim.o.rows,
-          -- col = vim.o.columns,
+              suffix_last = "l", -- Suffix to search with "prev" method
+              suffix_next = "n", -- Suffix to search with "next" method
+            },
+          },
+          keys = { "<leader>s" },
         },
-      })
-      -- vim.api.nvim_set_keymap("n", "<A-S-g>", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
-    end,
-    keys = {
-      { "<A-t>", "<CMD>:ToggleTerm direction=float<CR>", mode = { "n", "t", "i" } },
-      { "<A-\\>", "<CMD>:ToggleTerm direction=tab<CR>", mode = { "n", "t", "i" } },
-      { "<A-S-g>", "<cmd>lua Lazygit_toggle()<CR>", mode = { "n", "t", "i" } },
-    },
+        {
+          "ggandor/leap.nvim",
+          event = "VeryLazy",
+          config = function()
+            require("leap").create_default_mappings()
+          end,
+        },
+        -- Terminal shit
+        {
+          "akinsho/toggleterm.nvim",
+          version = "*",
+          config = function()
+            local Terminal = require("toggleterm.terminal").Terminal
+            local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "tab" })
 
-    cond = isNotVscode,
-  },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    ---@module "ibl"
-    ---@type ibl.config
-    opts = {},
-    lazy = false,
-    cond = isNotVscode,
-  },
-  {
-    "lewis6991/gitsigns.nvim",
-    opts = {
-      current_line_blame = true,
-    },
-    event = "VeryLazy",
-    keys = {
-      { "<leader>gsn", "<CMD>:Gitsigns next_hunk<CR>" },
-      { "<leader>gsp", "<CMD>:Gitsigns next_hunk<CR>" },
-      { "<leader>gsh", "<CMD>:Gitsigns preview_hunk<CR>" },
-      { "<leader>gsd", "<CMD>:Gitsigns toggle_deleted<CR>" },
-    },
-  },
-  {
-    "folke/trouble.nvim",
-    keys = {
-      {
-        "<leader>xD",
-        "<cmd>Trouble diagnostics toggle<cr>",
-        desc = "Diagnostics (Trouble)",
-      },
-      {
-        "<leader>xd",
-        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-        desc = "Buffer Diagnostics (Trouble)",
-      },
-      {
-        "<leader>cs",
-        "<cmd>Trouble symbols toggle focus=false<cr>",
-        desc = "Symbols (Trouble)",
-      },
-      {
-        "<leader>cl",
-        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-        desc = "LSP Definitions / references / ... (Trouble)",
-      },
-      {
-        "<leader>xL",
-        "<cmd>Trouble loclist toggle<cr>",
-        desc = "Location List (Trouble)",
-      },
-      {
-        "<leader>xQ",
-        "<cmd>Trouble qflist toggle<cr>",
-        desc = "Quickfix List (Trouble)",
-      },
-    },
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
-  },
-  -- cond = isNotVscode,
-  {
-    'krisajenkins/Cocoa-Strings', -- .strings
-    event = 'BufEnter *.strings',
-  },
-  {
-    'martinda/Jenkinsfile-vim-syntax', -- Jenkinsfile
-    event = 'BufEnter Jenkinsfile*',
-  },
-  {
-    'FooSoft/vim-argwrap',
-    -- event = 'VeryLazy',
-    keys = {
-      {"<leader>a", "<cmd>ArgWrap<cr>", desc = "Toggle multiline arguments"},
-    },
-  },
-}, { defaults = { lazy = true } })
+            function Lazygit_toggle()
+              lazygit:toggle()
+            end
+
+            require("toggleterm").setup({
+              shade_terminals = false,
+              auto_scroll = false,
+              float_opts = {
+                -- row = vim.o.rows,
+                -- col = vim.o.columns,
+              },
+            })
+            -- vim.api.nvim_set_keymap("n", "<A-S-g>", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+          end,
+          keys = {
+            { "<A-t>", "<CMD>:ToggleTerm direction=float<CR>", mode = { "n", "t", "i" } },
+            { "<A-\\>", "<CMD>:ToggleTerm direction=tab<CR>", mode = { "n", "t", "i" } },
+            { "<A-S-g>", "<cmd>lua Lazygit_toggle()<CR>", mode = { "n", "t", "i" } },
+          },
+
+          cond = isNotVscode,
+        },
+        {
+          "lukas-reineke/indent-blankline.nvim",
+          main = "ibl",
+          ---@module "ibl"
+          ---@type ibl.config
+          opts = {},
+          -- lazy = false,
+          event = "VeryLazy",
+          cond = isNotVscode,
+        },
+        {
+          "lewis6991/gitsigns.nvim",
+          opts = {
+            current_line_blame = true,
+          },
+          event = "VeryLazy",
+          keys = {
+            { "<leader>gsn", "<CMD>:Gitsigns next_hunk<CR>" },
+            { "<leader>gsp", "<CMD>:Gitsigns next_hunk<CR>" },
+            { "<leader>gsh", "<CMD>:Gitsigns preview_hunk<CR>" },
+            { "<leader>gsd", "<CMD>:Gitsigns toggle_deleted<CR>" },
+          },
+        },
+        {
+          "folke/trouble.nvim",
+          keys = {
+            {
+              "<leader>xD",
+              "<cmd>Trouble diagnostics toggle<cr>",
+              desc = "Diagnostics (Trouble)",
+            },
+            {
+              "<leader>xd",
+              "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+              desc = "Buffer Diagnostics (Trouble)",
+            },
+            {
+              "<leader>cs",
+              "<cmd>Trouble symbols toggle focus=false<cr>",
+              desc = "Symbols (Trouble)",
+            },
+            {
+              "<leader>cl",
+              "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+              desc = "LSP Definitions / references / ... (Trouble)",
+            },
+            {
+              "<leader>xL",
+              "<cmd>Trouble loclist toggle<cr>",
+              desc = "Location List (Trouble)",
+            },
+            {
+              "<leader>xQ",
+              "<cmd>Trouble qflist toggle<cr>",
+              desc = "Quickfix List (Trouble)",
+            },
+          },
+          opts = {}, -- for default options, refer to the configuration section for custom setup.
+        },
+        -- cond = isNotVscode,
+        {
+          "krisajenkins/Cocoa-Strings", -- .strings
+          event = "BufEnter *.strings",
+        },
+        {
+          "martinda/Jenkinsfile-vim-syntax", -- Jenkinsfile
+          event = "BufEnter Jenkinsfile*",
+        },
+        {
+          "FooSoft/vim-argwrap",
+          -- event = 'VeryLazy',
+          keys = {
+            { "<leader>a", "<cmd>ArgWrap<cr>", desc = "Toggle multiline arguments" },
+          },
+        },
+      }, { defaults = { lazy = true } })
